@@ -13,7 +13,7 @@ const impactCovid = (data) => {
     dollarsInFlight
   } = impact;
   currentlyInfected = reportedCases * 10;
-  infectionsByRequestedTime = periodType === 'days' ? currentlyInfected * 1024 : currentlyInfected * 512;
+  infectionsByRequestedTime = periodType === 'days' ? currentlyInfected * 512 : currentlyInfected * 1024;
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = severeCasesByRequestedTime - severeAvBeds;
@@ -50,7 +50,7 @@ const severeCovid = (data) => {
     dollarsInFlight
   } = severeImpact;
   currentlyInfected = reportedCases * 50;
-  infectionsByRequestedTime = periodType === 'days' ? currentlyInfected * 1024 : currentlyInfected * 512;
+  infectionsByRequestedTime = periodType === 'days' ? currentlyInfected * 512 : currentlyInfected * 1024;
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = severeCasesByRequestedTime - severeAvBeds;
