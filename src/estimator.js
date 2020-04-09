@@ -13,7 +13,7 @@ const impactCovid = (data) => {
     dollarsInFlight
   } = impact;
   currentlyInfected = reportedCases * 10;
-  infectionsByRequestedTime = currentlyInfected * 512;
+  infectionsByRequestedTime = currentlyInfected * 1024;
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = severeCasesByRequestedTime - severeAvBeds;
@@ -50,7 +50,7 @@ const severeCovid = (data) => {
     dollarsInFlight
   } = severeImpact;
   currentlyInfected = reportedCases * 50;
-  infectionsByRequestedTime = currentlyInfected * 512;
+  infectionsByRequestedTime = currentlyInfected * 1024;
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = severeCasesByRequestedTime - severeAvBeds;
@@ -81,6 +81,5 @@ const covid19ImpactEstimator = (data) => {
     severeImpact
   });
 };
-
 
 export default covid19ImpactEstimator;
