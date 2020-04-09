@@ -1,5 +1,22 @@
+const convertToDays = (periodType, timeToEllapse) => {
+  switch (periodType) {
+    case 'days':
+      return timeToEllapse;
+    case 'weeks':
+      return timeToEllapse * 7;
+    case 'months':
+      return timeToEllapse * 30;
+    default:
+      return timeToEllapse;
+  }
+};
 const impactCovid = (data) => {
-  const { reportedCases, totalHospitalBeds } = data;
+  const {
+    reportedCases,
+    totalHospitalBeds,
+    periodType,
+    timeToElapse
+  } = data;
   const impact = {};
   let {
     currentlyInfected,
@@ -13,7 +30,10 @@ const impactCovid = (data) => {
     dollarsInFlight
   } = impact;
   currentlyInfected = reportedCases * 10;
-  infectionsByRequestedTime = currentlyInfected * 1024;
+  infectionsByRequestedTime = Math.trunc(
+    currentlyInfected
+      * 2 ** Math.trunc(convertToDays(periodType, timeToElapse) / 3)
+  );
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = severeCasesByRequestedTime - severeAvBeds;
@@ -36,7 +56,12 @@ const impactCovid = (data) => {
 };
 
 const severeCovid = (data) => {
-  const { reportedCases, totalHospitalBeds } = data;
+  const {
+    reportedCases,
+    totalHospitalBeds,
+    periodType,
+    timeToElapse
+  } = data;
   const severeImpact = {};
   let {
     currentlyInfected,
@@ -50,7 +75,10 @@ const severeCovid = (data) => {
     dollarsInFlight
   } = severeImpact;
   currentlyInfected = reportedCases * 50;
-  infectionsByRequestedTime = currentlyInfected * 1024;
+  infectionsByRequestedTime = Math.trunc(
+    currentlyInfected
+      * 2 ** Math.trunc(convertToDays(periodType, timeToElapse) / 3)
+  );
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = severeCasesByRequestedTime - severeAvBeds;
