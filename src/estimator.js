@@ -50,7 +50,7 @@ const severeCovid = (data) => {
     dollarsInFlight
   } = severeImpact;
   currentlyInfected = reportedCases * 50;
-  infectionsByRequestedTime = currentlyInfected * 1024;
+  infectionsByRequestedTime = currentlyInfected * 512;
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = severeCasesByRequestedTime - severeAvBeds;
