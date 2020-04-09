@@ -23,15 +23,15 @@ const impactCovid = (data) => {
   casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
   return {
-    impact: {
-      currentlyInfected,
-      infectionsByRequestedTime,
-      severeCasesByRequestedTime,
-      hospitalBedsByRequestedTime,
-      casesForICUByRequestedTime,
-      casesForVentilatorsByRequestedTime,
-      dollarsInFlight
-    }
+    currentlyInfected,
+    infectionsByRequestedTime,
+    severeCasesByRequestedTime,
+    severeAvBeds,
+    remainbeds,
+    hospitalBedsByRequestedTime,
+    casesForICUByRequestedTime,
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 };
 
@@ -60,15 +60,15 @@ const severeCovid = (data) => {
   casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
   return {
-    severeImpact: {
-      currentlyInfected,
-      infectionsByRequestedTime,
-      severeCasesByRequestedTime,
-      hospitalBedsByRequestedTime,
-      casesForICUByRequestedTime,
-      casesForVentilatorsByRequestedTime,
-      dollarsInFlight
-    }
+    currentlyInfected,
+    infectionsByRequestedTime,
+    severeCasesByRequestedTime,
+    severeAvBeds,
+    remainbeds,
+    hospitalBedsByRequestedTime,
+    casesForICUByRequestedTime,
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 };
 
