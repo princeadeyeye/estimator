@@ -1,5 +1,5 @@
 const impactCovid = (data) => {
-  const { reportedCases, totalHospitalBeds, periodType } = data;
+  const { reportedCases, totalHospitalBeds } = data;
   const impact = {};
   let {
     currentlyInfected,
@@ -13,7 +13,7 @@ const impactCovid = (data) => {
     dollarsInFlight
   } = impact;
   currentlyInfected = reportedCases * 10;
-  infectionsByRequestedTime = periodType === 'days' ? currentlyInfected * 1024 : currentlyInfected * 512;
+  infectionsByRequestedTime = currentlyInfected * 1024;
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = severeCasesByRequestedTime - severeAvBeds;
