@@ -63,7 +63,8 @@ const severeCovid = (data) => {
     reportedCases,
     totalHospitalBeds,
     periodType,
-    timeToElapse
+    timeToElapse,
+    region: { avgDailyInUSD, avgDailyIncomePopulation }
   } = data;
   const severeImpact = {};
   let {
@@ -87,9 +88,11 @@ const severeCovid = (data) => {
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
     ? severeAvBeds : remainbeds;
-  casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
-  casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
-  dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
+  casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
+  casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
+  dollarsInFlight = Number(
+    infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyInUSD * 30
+  ).toFixed(2);
   return {
     currentlyInfected,
     infectionsByRequestedTime,
