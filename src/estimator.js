@@ -39,9 +39,9 @@ const impactCovid = (data) => {
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
     ? severeAvBeds : remainbeds;
-  casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
-  casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  dollarsInFlight = Math.trunc(infectionsByRequestedTime * 1 * 1.5 * 30);
+  casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
+  casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+  dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
@@ -84,9 +84,9 @@ const severeCovid = (data) => {
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
     ? severeAvBeds : remainbeds;
-  casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
-  casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  dollarsInFlight = Math.trunc(infectionsByRequestedTime * 1 * 1.5 * 30);
+  casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
+  casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+  dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
