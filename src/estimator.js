@@ -41,10 +41,9 @@ const impactCovid = (data) => {
   hospitalBedsByRequestedTime = remainbeds;
   casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  const dollars = Number(
+  dollarsInFlight = Number(
     infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyInUSD * 30
   ).toFixed(2);
-  dollarsInFlight = Math.trunc(dollars);
   return {
     currentlyInfected,
     infectionsByRequestedTime,
