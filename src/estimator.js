@@ -23,7 +23,6 @@ const impactCovid = (data) => {
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
     severeAvBeds,
-    remainbeds,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
@@ -36,9 +35,7 @@ const impactCovid = (data) => {
   );
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
-  remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
-  hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
-    ? severeAvBeds : remainbeds;
+  hospitalBedsByRequestedTime = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
   dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
@@ -46,8 +43,6 @@ const impactCovid = (data) => {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
-    severeAvBeds,
-    remainbeds,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
@@ -68,7 +63,6 @@ const severeCovid = (data) => {
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
     severeAvBeds,
-    remainbeds,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
@@ -81,9 +75,7 @@ const severeCovid = (data) => {
   );
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
-  remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
-  hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
-    ? severeAvBeds : remainbeds;
+  hospitalBedsByRequestedTime = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
   casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
@@ -91,8 +83,6 @@ const severeCovid = (data) => {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
-    severeAvBeds,
-    remainbeds,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
