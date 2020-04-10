@@ -16,7 +16,6 @@ const impactCovid = (data) => {
     totalHospitalBeds,
     periodType,
     timeToElapse
-    // region: { avgDailyIncomeInUSD, avgDailyIncomePopulation }
   } = data;
   const impact = {};
   let {
@@ -27,8 +26,8 @@ const impactCovid = (data) => {
     remainbeds,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
-    casesForVentilatorsByRequestedTime
-    // dollarsInFlight
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   } = impact;
   currentlyInfected = reportedCases * 10;
   infectionsByRequestedTime = Math.trunc(
@@ -38,12 +37,11 @@ const impactCovid = (data) => {
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
-  hospitalBedsByRequestedTime = remainbeds;
+  hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
+    ? severeAvBeds : remainbeds;
   casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  // dollarsInFlight = Number(
-  //   infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30
-  // ).toFixed(2);
+  dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
@@ -52,8 +50,8 @@ const impactCovid = (data) => {
     remainbeds,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
-    casesForVentilatorsByRequestedTime
-    // dollarsInFlight
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 };
 
@@ -62,8 +60,7 @@ const severeCovid = (data) => {
     reportedCases,
     totalHospitalBeds,
     periodType,
-    timeToElapse,
-    region: { avgDailyIncomeInUSD, avgDailyIncomePopulation }
+    timeToElapse
   } = data;
   const severeImpact = {};
   let {
@@ -87,11 +84,9 @@ const severeCovid = (data) => {
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
     ? severeAvBeds : remainbeds;
-  casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
-  casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  dollarsInFlight = Number(
-    infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30
-  ).toFixed(2);
+  casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
+  casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+  dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
