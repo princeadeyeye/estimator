@@ -15,8 +15,7 @@ const impactCovid = (data) => {
     reportedCases,
     totalHospitalBeds,
     periodType,
-    timeToElapse,
-    region: { avgDailyInUSD, avgDailyIncomePopulation }
+    timeToElapse
   } = data;
   const impact = {};
   let {
@@ -40,11 +39,9 @@ const impactCovid = (data) => {
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
     ? severeAvBeds : remainbeds;
-  casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
-  casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  dollarsInFlight = Number(
-    infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyInUSD * 30
-  ).toFixed(2);
+  casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
+  casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+  dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
@@ -63,8 +60,7 @@ const severeCovid = (data) => {
     reportedCases,
     totalHospitalBeds,
     periodType,
-    timeToElapse,
-    region: { avgDailyInUSD, avgDailyIncomePopulation }
+    timeToElapse
   } = data;
   const severeImpact = {};
   let {
@@ -88,11 +84,9 @@ const severeCovid = (data) => {
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
     ? severeAvBeds : remainbeds;
-  casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
-  casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  dollarsInFlight = Number(
-    infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyInUSD * 30
-  ).toFixed(2);
+  casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
+  casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+  dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
