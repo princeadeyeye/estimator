@@ -16,7 +16,8 @@ const impactCovid = (data) => {
     totalHospitalBeds,
     periodType,
     timeToElapse,
-    region: { avgDailyIncomeInUSD, avgDailyIncomePopulation }
+    population,
+    region: { avgDailyIncomePopulation }
   } = data;
   const impact = {};
   let {
@@ -39,7 +40,11 @@ const impactCovid = (data) => {
   hospitalBedsByRequestedTime = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
+  const percentageAffected = (currentlyInfected / population) * 100;
+  const totalMoney = population * avgDailyIncomePopulation;
+  const dailyIncomeInfected1 = percentageAffected * totalMoney;
+  // const dailyIncomeInfected2 = currentlyInfected * avgDailyIncomeInUSD;
+  dollarsInFlight = infectionsByRequestedTime * percentageAffected * dailyIncomeInfected1 * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
@@ -57,7 +62,8 @@ const severeCovid = (data) => {
     totalHospitalBeds,
     periodType,
     timeToElapse,
-    region: { avgDailyIncomeInUSD, avgDailyIncomePopulation }
+    population,
+    region: { avgDailyIncomePopulation }
   } = data;
   const severeImpact = {};
   let {
@@ -78,9 +84,13 @@ const severeCovid = (data) => {
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   hospitalBedsByRequestedTime = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
-  casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
-  casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
-  dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
+  casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
+  casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
+  const percentageAffected = (currentlyInfected / population) * 100;
+  const totalMoney = population * avgDailyIncomePopulation;
+  const dailyIncomeInfected1 = percentageAffected * totalMoney;
+  // const dailyIncomeInfected2 = currentlyInfected * avgDailyIncomeInUSD;
+  dollarsInFlight = infectionsByRequestedTime * percentageAffected * dailyIncomeInfected1 * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
