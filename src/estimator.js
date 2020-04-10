@@ -38,8 +38,7 @@ const impactCovid = (data) => {
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
-  hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
-    ? severeAvBeds : remainbeds;
+  hospitalBedsByRequestedTime = remainbeds;
   casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
   const dollars = Number(
