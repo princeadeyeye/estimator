@@ -15,7 +15,7 @@ const impactCovid = (data) => {
     reportedCases,
     totalHospitalBeds,
     periodType,
-    timeToElapse,
+    timeToElapse
     // region: { avgDailyIncomeInUSD, avgDailyIncomePopulation }
   } = data;
   const impact = {};
@@ -27,7 +27,7 @@ const impactCovid = (data) => {
     remainbeds,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
-    casesForVentilatorsByRequestedTime,
+    casesForVentilatorsByRequestedTime
     // dollarsInFlight
   } = impact;
   currentlyInfected = reportedCases * 10;
@@ -52,7 +52,7 @@ const impactCovid = (data) => {
     remainbeds,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
-    casesForVentilatorsByRequestedTime,
+    casesForVentilatorsByRequestedTime
     // dollarsInFlight
   };
 };
