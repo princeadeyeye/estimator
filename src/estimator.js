@@ -15,7 +15,8 @@ const impactCovid = (data) => {
     reportedCases,
     totalHospitalBeds,
     periodType,
-    timeToElapse
+    timeToElapse,
+    region: { avgDailyIncomeInUSD, avgDailyIncomePopulation }
   } = data;
   const impact = {};
   let {
@@ -38,7 +39,7 @@ const impactCovid = (data) => {
   hospitalBedsByRequestedTime = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
+  dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
@@ -55,7 +56,8 @@ const severeCovid = (data) => {
     reportedCases,
     totalHospitalBeds,
     periodType,
-    timeToElapse
+    timeToElapse,
+    region: { avgDailyIncomeInUSD, avgDailyIncomePopulation }
   } = data;
   const severeImpact = {};
   let {
@@ -78,7 +80,7 @@ const severeCovid = (data) => {
   hospitalBedsByRequestedTime = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
   casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
-  dollarsInFlight = infectionsByRequestedTime * 1 * 1.5 * 30;
+  dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30;
   return {
     currentlyInfected,
     infectionsByRequestedTime,
