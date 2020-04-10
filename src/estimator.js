@@ -35,7 +35,7 @@ const impactCovid = (data) => {
       * 2 ** Math.trunc(convertToDays(periodType, timeToElapse) / 3)
   );
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
-  severeAvBeds = Math.trunc(0.35 * totalHospitalBeds);
+  severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
     ? severeAvBeds : remainbeds;
@@ -80,7 +80,7 @@ const severeCovid = (data) => {
       * 2 ** Math.trunc(convertToDays(periodType, timeToElapse) / 3)
   );
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
-  severeAvBeds = Math.trunc(0.35 * totalHospitalBeds);
+  severeAvBeds = 0.35 * totalHospitalBeds;
   remainbeds = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
     ? severeAvBeds : remainbeds;
