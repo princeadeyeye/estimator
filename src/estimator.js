@@ -35,7 +35,8 @@ const impactCovid = (data) => {
       * 2 ** Math.trunc(convertToDays(periodType, timeToElapse) / 3)
   );
   severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
-  severeAvBeds = Math.trunc(0.35 * totalHospitalBeds);
+  const totalavBeds = Math.trunc(0.95 * totalHospitalBeds);
+  severeAvBeds = Math.trunc(0.35 * totalavBeds);
   remainbeds = severeCasesByRequestedTime - severeAvBeds;
   hospitalBedsByRequestedTime = (severeAvBeds > severeCasesByRequestedTime)
     ? severeAvBeds : -remainbeds;
