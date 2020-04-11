@@ -42,17 +42,13 @@
 					<span class="focus-input100"></span>
 				</div>
 
-				<label for="type-select">Choose a Period Type</label>
-				<div class="wrap-input100 validate-input">
-				<select class=" wrap-input100 input100 pt-2 pb-3" name="type" id="type-select" data-period-type>
-				    <option class="input100" value="">Please choose an option</option>
-				    <option value="days">Days</option>
-				    <option value="weeks">Weeks</option>
-				    <option value="months">Months</option>
-				</select>
-					<span class="focus-input100"></span>
-				</div>
-
+                <label for="select">Choose a Period Type: </label>
+                <input id="select" list="select" name="select" data-period-type>
+                    <datalist class="wrap-input100 validate-input" >    
+                    <option value="days"/>
+                    <option value="weeks"/>
+                    <option value="months"/>
+                    </datalist>
 				<div class="container-contact100-form-btn">
 					<button data-go-estimate class="contact100-form-btn">
 						show estimate
