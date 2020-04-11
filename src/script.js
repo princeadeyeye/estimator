@@ -16,7 +16,7 @@ const impactCovid = (data) => {
     totalHospitalBeds,
     periodType,
     timeToElapse,
-    population
+    region: { avgDailyIncomeInUSD, avgDailyIncomePopulation }
   } = data;
   const impact = {};
   let {
@@ -39,12 +39,8 @@ const impactCovid = (data) => {
   hospitalBedsByRequestedTime = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  const percentageAffected = (reportedCases / population) * 100;
-  // const totalMoney = population * avgDailyIncomePopulation;
-  const dailyIncomeInfected1 = percentageAffected * population;
-  // const dailyIncomeInfected2 = currentlyInfected * avgDailyIncomeInUSD;
-  dollarsInFlight = Math.trunc(infectionsByRequestedTime * percentageAffected
-      * dailyIncomeInfected1 * 30);
+  dollarsInFlight = Math.trunc((infectionsByRequestedTime
+    * avgDailyIncomeInUSD * avgDailyIncomePopulation) / convertToDays(periodType, timeToElapse));
   return {
     currentlyInfected,
     infectionsByRequestedTime,
@@ -62,7 +58,7 @@ const severeCovid = (data) => {
     totalHospitalBeds,
     periodType,
     timeToElapse,
-    population
+    region: { avgDailyIncomeInUSD, avgDailyIncomePopulation }
   } = data;
   const severeImpact = {};
   let {
@@ -85,12 +81,8 @@ const severeCovid = (data) => {
   hospitalBedsByRequestedTime = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  const percentageAffected = (reportedCases / population) * 100;
-  // const totalMoney = population * avgDailyIncomePopulation;
-  const dailyIncomeInfected1 = percentageAffected * population;
-  // const dailyIncomeInfected2 = currentlyInfected * avgDailyIncomeInUSD;
-  dollarsInFlight = Math.trunc(infectionsByRequestedTime
-      * percentageAffected * dailyIncomeInfected1 * 30);
+  dollarsInFlight = Math.trunc((infectionsByRequestedTime
+    * avgDailyIncomeInUSD * avgDailyIncomePopulation) / convertToDays(periodType, timeToElapse));
   return {
     currentlyInfected,
     infectionsByRequestedTime,
