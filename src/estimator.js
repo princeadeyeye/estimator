@@ -87,7 +87,7 @@ const severeCovid = (data) => {
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
   const percentageAffected = (reportedCases / population) * 100;
   // const totalMoney = population * avgDailyIncomePopulation;
-  const dailyIncomeInfected1 = percentageAffected * population;
+  const dailyIncomeInfected1 = percentageAffected * 1.5;
   // const dailyIncomeInfected2 = currentlyInfected * avgDailyIncomeInUSD;
   dollarsInFlight = Math.trunc(infectionsByRequestedTime
     * percentageAffected * dailyIncomeInfected1 * 30);
