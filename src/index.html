@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>My Covid- 19 Extimator</title>
+    <title>My Covid- 19 Extimator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -15,24 +16,26 @@
 				<span class="contact100-form-title">
 					Welcome to My Covid-19 Estimator
 				</span>
-
+                <label for="population">Total Population</label>
 				<div class="wrap-input100 validate-input">
-					<input data-population class="input100" type="number" name="population" placeholder="Please enter the population">
+					<input id="population" data-population class="input100" type="number" name="population" placeholder="Please enter the population">
 					<span class="focus-input100"></span>
 				</div>
 
+                <label for="time">Elapsed Time</label>
 				<div class="wrap-input100 validate-input">
-					<input data-time-to-elapse class="input100" type="number" name="time" placeholder="Elapsed Time">
+					<input id="time" data-time-to-elapse class="input100" type="number" name="time" placeholder="Enter the elapsed time">
+					<span class="focus-input100"></span>
+				</div>
+                <label for="cases">Reported Cases</label>
+				<div class="wrap-input100 validate-input">
+					<input id="cases" data-reported-cases class="input100" type="number" name="cases" placeholder="Enter the reported cases">
 					<span class="focus-input100"></span>
 				</div>
 
+                <label for="beds">Total Hospital Beds</label>
 				<div class="wrap-input100 validate-input">
-					<input data-reported-cases class="input100" type="number" name="cases" placeholder="Reported Cases">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input">
-					<input data-total-hospital-beds class="input100" type="number" name="beds" placeholder="Total Hospital beds">
+					<input id="beds" data-total-hospital-beds class="input100" type="number" name="beds" placeholder="Enter the total hospital beds">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -56,6 +59,6 @@
 			</form>
 		</div>
 	</div>
-<script type="text/javascript" src="estimator.js"></script>
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
