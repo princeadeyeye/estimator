@@ -40,16 +40,18 @@
 				<div class="wrap-input100 validate-input">
 					<input id="beds" data-total-hospital-beds class="input100" type="number" name="beds" placeholder="Enter the total hospital beds">
 					<span class="focus-input100"></span>
-                </div>
-                
-                <label for="period">Choose a Period Type: </label>
-                    <input data-period-type list="periodType" id="period" name="period" />
+				</div>
 
-                    <datalist class="wrap-input100 validate-input" id="periodType">
-                        <option value="days">
-                        <option value="weeks">
-                        <option value="months">
-                    </datalist>
+				<label for="type-select">Choose a Period Type:  </label>
+				<div class="wrap-input100 validate-input">
+				<select class=" wrap-input100 input100 pt-2 pb-3" name="type" id="type-select" data-period-type>
+				    <option value="days">Days</option>
+				    <option value="weeks">Weeks</option>
+				    <option value="months">Months</option>
+				</select>
+					<span class="focus-input100"></span>
+				</div>
+                
 				<div class="container-contact100-form-btn">
 					<button data-go-estimate class="contact100-form-btn">
 						show estimate

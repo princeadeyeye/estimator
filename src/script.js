@@ -109,7 +109,7 @@ const getInput = () => {
   const timeToElapse = document.querySelector('input[data-time-to-elapse]').value;
   const reportedCases = document.querySelector('input[data-reported-cases]').value;
   const totalHospitalBeds = document.querySelector('input[data-total-hospital-beds]').value;
-  const periodType = document.querySelector('input[data-period-type]').value;
+  const periodType = document.querySelector('select[data-period-type]').value;
   const data = {
     population, timeToElapse, reportedCases, totalHospitalBeds, periodType
   };
