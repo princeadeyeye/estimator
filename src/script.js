@@ -117,7 +117,6 @@ const getInput = () => {
 };
 const sendInputData = () => {
   const data = getInput();
-  console.log(data)
   covid19ImpactEstimator(data);
 };
 
