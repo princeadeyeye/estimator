@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Covid- 19 Extimator</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div class="container-contact100">
+		<div class="contact100-map" id="google_map" data-map-x="40.722047" data-map-y="-73.986422" data-pin="images/icons/map-marker.png" data-scrollwhell="0" data-draggable="1"></div>
+
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Welcome to My Covid-19 Estimator
+				</span>
+
+				<div class="wrap-input100 validate-input">
+					<input data-population class="input100" type="number" name="population" placeholder="Please enter the population">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<input data-time-to-elapse class="input100" type="number" name="time" placeholder="Elapsed Time">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<input data-reported-cases class="input100" type="number" name="cases" placeholder="Reported Cases">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<input data-total-hospital-beds class="input100" type="number" name="beds" placeholder="Total Hospital beds">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label for="type-select">Choose a Period Type</label>
+				<div class="wrap-input100 validate-input">
+				<select class=" wrap-input100 input100 pt-2 pb-3" name="type" id="type-select" data-period-type>
+				    <option class="input100" value="">Please choose an option</option>
+				    <option value="days">Days</option>
+				    <option value="weeks">Weeks</option>
+				    <option value="months">Months</option>
+				</select>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button data-go-estimate class="contact100-form-btn">
+						show estimate
+					</button>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+<script type="text/javascript" src="estimator.js"></script>
+</body>
+</html>
