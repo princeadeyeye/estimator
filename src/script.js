@@ -32,15 +32,15 @@ const impactCovid = (data) => {
   currentlyInfected = reportedCases * 10;
   infectionsByRequestedTime = Math.trunc(
     currentlyInfected
-      * 2 ** Math.trunc(convertToDays(periodType, timeToElapse) / 3)
+        * 2 ** Math.trunc(convertToDays(periodType, timeToElapse) / 3)
   );
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
   hospitalBedsByRequestedTime = Math.trunc(severeAvBeds - severeCasesByRequestedTime);
   casesForICUByRequestedTime = Math.trunc(0.05 * infectionsByRequestedTime);
   casesForVentilatorsByRequestedTime = Math.trunc(0.02 * infectionsByRequestedTime);
-  dollarsInFlight = Math.trunc((infectionsByRequestedTime * avgDailyIncomeInUSD
-    * avgDailyIncomePopulation) / convertToDays(periodType, timeToElapse));
+  dollarsInFlight = Math.trunc((infectionsByRequestedTime
+    * avgDailyIncomeInUSD * avgDailyIncomePopulation) / convertToDays(periodType, timeToElapse));
   return {
     currentlyInfected,
     infectionsByRequestedTime,
@@ -74,7 +74,7 @@ const severeCovid = (data) => {
   currentlyInfected = reportedCases * 50;
   infectionsByRequestedTime = Math.trunc(
     currentlyInfected
-      * 2 ** Math.trunc(convertToDays(periodType, timeToElapse) / 3)
+        * 2 ** Math.trunc(convertToDays(periodType, timeToElapse) / 3)
   );
   severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
   severeAvBeds = 0.35 * totalHospitalBeds;
@@ -104,4 +104,28 @@ const covid19ImpactEstimator = (data) => {
   });
 };
 
-export default covid19ImpactEstimator;
+const getInput = () => {
+  const population = document.querySelector('input[data-population]').value;
+  const timeToElapse = document.querySelector('input[data-time-to-elapse]').value;
+  const reportedCases = document.querySelector('input[data-reported-cases]').value;
+  const totalHospitalBeds = document.querySelector('input[data-total-hospital-beds]').value;
+  const periodType = document.querySelector('select[data-period-type]').value;
+  const data = {
+    population, timeToElapse, reportedCases, totalHospitalBeds, periodType
+  };
+  return data;
+};
+const sendInputData = () => {
+  const data = getInput();
+  covid19ImpactEstimator(data);
+};
+
+const loadApp = () => {
+  const button = document.querySelector('button[data-go-estimate]');
+  button.addEventListener('click', (event) => {
+    event.preventDefault();
+    sendInputData();
+  });
+};
+
+loadApp();

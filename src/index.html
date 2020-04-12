@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Covid- 19 Extimator</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Covid-19 estimator">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="author" content="Adeyeye Muiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div class="container-contact100">
+		<div class="contact100-map" id="google_map" data-map-x="40.722047" data-map-y="-73.986422" data-pin="images/icons/map-marker.png" data-scrollwhell="0" data-draggable="1"></div>
+
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Welcome to My Covid-19 Estimator
+				</span>
+                <label for="population">Total Population</label>
+				<div class="wrap-input100 validate-input">
+					<input id="population" data-population class="input100" type="number" name="population" placeholder="Please enter the population">
+					<span class="focus-input100"></span>
+				</div>
+
+                <label for="time">Elapsed Time</label>
+				<div class="wrap-input100 validate-input">
+					<input id="time" data-time-to-elapse class="input100" type="number" name="time" placeholder="Enter the elapsed time">
+					<span class="focus-input100"></span>
+				</div>
+                <label for="cases">Reported Cases</label>
+				<div class="wrap-input100 validate-input">
+					<input id="cases" data-reported-cases class="input100" type="number" name="cases" placeholder="Enter the reported cases">
+					<span class="focus-input100"></span>
+				</div>
+
+                <label for="beds">Total Hospital Beds</label>
+				<div class="wrap-input100 validate-input">
+					<input id="beds" data-total-hospital-beds class="input100" type="number" name="beds" placeholder="Enter the total hospital beds">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label for="type-select">Choose a Period Type:  </label>
+				<div class="wrap-input100 validate-input">
+				<select class=" wrap-input100 input100 pt-2 pb-3" name="type" id="type-select" data-period-type>
+				    <option value="days">Days</option>
+				    <option value="weeks">Weeks</option>
+				    <option value="months">Months</option>
+				</select>
+					<span class="focus-input100"></span>
+				</div>
+                
+				<div class="container-contact100-form-btn">
+					<button data-go-estimate class="contact100-form-btn">
+						show estimate
+					</button>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
